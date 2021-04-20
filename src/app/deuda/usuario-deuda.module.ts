@@ -6,6 +6,7 @@ import { ListarUsuariosComponent } from './componentes/listar-usuarios/listar-us
 import { ListarDeudasComponent } from './componentes/listar-deudas/listar-deudas.component';
 import { CrearDeudaComponent } from './componentes/crear-deuda/crear-deuda.component';
 import { EditarDeudaComponent } from './componentes/editar-deuda/editar-deuda.component';
+import { UsuarioDeudaService } from "./servicio/usuario-deuda.service";
 
 
 @NgModule({
@@ -13,6 +14,9 @@ import { EditarDeudaComponent } from './componentes/editar-deuda/editar-deuda.co
   imports: [
     CommonModule,
     UsuarioDeudaRoutingModule
+  ],
+  providers: [
+    UsuarioDeudaService
   ]
 })
 export class UsuarioDeudaModule { }
