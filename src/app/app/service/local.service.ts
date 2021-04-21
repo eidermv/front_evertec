@@ -15,6 +15,10 @@ export class LocalService {
     return this.storageService.secureStorage.getItem(key);
   }
 
+  removeJsonValue(key: string) {
+    this.storageService.secureStorage.removeItem(key);
+  }
+
   clearToken() {
     return this.storageService.secureStorage.clear();
   }

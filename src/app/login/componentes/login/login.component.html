@@ -1,1 +1,44 @@
-<p>login works!</p>
+<mat-card class="example-card">
+  <mat-card-header class="d-flex justify-content-center">
+    <mat-card-title><h2>Iniciar Sesión</h2></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <form class="" [formGroup]="usuarioForm">
+
+      <div class="row">
+
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input matInput placeholder="Placeholder" [formControl]="this.controls.usuario">
+            <!--          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>-->
+            <mat-error *ngIf="this.controls.usuario.invalid">{{this.mnsErrorUs}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="this.controls.contrasena">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <!--          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>-->
+            <mat-error *ngIf="this.controls.contrasena.invalid">{{this.mnsErrorPass}}</mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="centrar">
+      <button mat-flat-button color="primary" [disabled]="this.usuarioForm.invalid" [matTooltip]="'Guardar Tercero'" (click)="guardar()"><mat-icon>done</mat-icon> Aceptar</button>
+    </div>
+  </mat-card-actions>
+</mat-card>

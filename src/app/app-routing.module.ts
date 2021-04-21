@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from "./app/permiso/auth.guard";
 
 const routes: Routes = [
   {
@@ -8,6 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'usuario',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./deuda/usuario-deuda.module').then(m => m.UsuarioDeudaModule)
   },
   {path: '', redirectTo: '/login/iniciar', pathMatch: 'full'},
