@@ -14,14 +14,14 @@ const routes: Routes = [
     }
   },
   {
-    path: 'editar_deuda',
+    path: 'editar_deuda/:usuario',
     component: EditarDeudaComponent,
     data: {
       title: 'Editar Deuda '
     }
   },
   {
-    path: 'listar_deuda',
+    path: 'listar_deuda/:usuario',
     component: ListarDeudasComponent,
     data: {
       title: 'Listar Deuda '

@@ -1,0 +1,122 @@
+td.mat-cell {
+  border-left: 0.5px solid gainsboro;
+  text-align: center;
+  font-size: 9pt !important;
+}
+
+.material-icons.color_azul {
+  color: #34b1b6;
+}
+
+
+.table-container {
+  position: relative;
+  /*max-height: 400px;*/
+  overflow: auto;
+  /*display: flex;*/
+  /*display: block;
+  horiz-align: center !important;
+  justify-content: center;*/
+}
+
+.pequeña {
+  max-height: 120px;
+}
+
+.mediana {
+  max-height: 220px;
+}
+
+.grande {
+  max-height: 320px;
+}
+
+.extra {
+  max-height: 420px;
+}
+
+.container-all {
+  position: relative;
+  min-height: 20px;
+  max-width: 1200px;
+  /*height: 250px;*/
+}
+
+table {
+  width: 1050px;
+}
+
+td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
+}
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+th {
+  background-color: #fafafa;
+  font-weight: bold;
+}
+
+tr:hover {
+  transition: .2s;
+  background-color: #F3FDFF;
+}
+
+.mat-table-sticky:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky:last-child {
+  border-left: 1px solid #e0e0e0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: -1.5rem;
+}
+
+th, td {
+  overflow: hidden;
+  max-width: 150px;
+  min-width: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.mat-header-row, .mat-row {
+  height: 35px !important;
+}
+
+.mat-paginator{
+  margin-top: -12px !important;
+  height: 40px !important;
+}
+
+.mat-header-cell, .mat-cell{
+  text-align: center !important;
+}
+
+.alerta {
+  background-color: crimson;
+}
+
+.correcto {
+  background-color: forestgreen;
+}
+
+.aling-izq {
+  width: 100%;
+  vertical-align: middle;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.align-center {
+  text-align: center;
+}

@@ -12,10 +12,10 @@ export class AuthService {
   ) { }
 
   login() {
-    let headers = new HttpHeaders({
+    /*let headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    let options = { headers: headers };
-    return this.http.post<any>(environment.apiUrl+'usuario/auth', options);
+    let options = { headers: headers };*/
+    return this.http.post<any>(environment.apiUrl+'usuario/auth', null);
   }
 }

@@ -58,6 +58,12 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
       usurios: this.controls.usuario,
       contrasena: this.controls.contrasena,
     });
+
+    if (this.sesion.logueado.value) {
+      this.router.navigateByUrl('/usuario/listar_usuario');
+    } else {
+      this.router.navigateByUrl('/login/iniciar');
+    }
   }
 
   volver(): void{
@@ -97,7 +103,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
                   showConfirmButton: false,
                   timer: 1500
                 });
-                this.router.navigateByUrl('/usuario/listar');
+                this.router.navigateByUrl('/usuario/listar_usuario');
                 this.sesion.setLocalAuthKey(valor.key);
                 this.localService.setJsonValue('logueado', 'true');
                 this.sesion.guardarDatos(valor.data);

@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  CanActivate,
+  CanActivateChild,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+  Router
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { SesionService } from "../service/sesion.service";
 
@@ -8,6 +15,7 @@ import { SesionService } from "../service/sesion.service";
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(
+    private router: Router,
     private sesion: SesionService
   ) {
   }
@@ -18,6 +26,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if (this.sesion.logueado.value) {
       return true;
     } else {
+      this.router.navigateByUrl('/login/iniciar');
       return false;
     }
   }
@@ -27,6 +36,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if (this.sesion.logueado.value) {
       return true;
     } else {
+      this.router.navigateByUrl('/login/iniciar');
       return false;
     }
   }

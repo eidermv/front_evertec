@@ -3,7 +3,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HttpHeaders
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SesionService } from "./sesion.service";
@@ -26,7 +26,7 @@ export class PeticionInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
     const headers = request.clone({
-      headers: request.headers.set('Authorization', auth)
+      headers: request.headers.set('Content-Type', 'application/json').set('Authorization', auth)
     });
     return next.handle(headers);
   }
