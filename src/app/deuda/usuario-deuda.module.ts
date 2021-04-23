@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { UsuarioDeudaRoutingModule } from './usuario-deuda-routing.module';
 import { ListarUsuariosComponent } from './componentes/listar-usuarios/listar-usuarios.component';
@@ -18,27 +18,34 @@ import { MatTableModule } from "@angular/material/table";
 import { UsuarioDeudaContenedorService } from "./servicio/usuario-deuda-contenedor.service";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSortModule } from "@angular/material/sort";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
 
 
 @NgModule({
   declarations: [ListarUsuariosComponent, ListarDeudasComponent, CrearDeudaComponent, EditarDeudaComponent],
-  imports: [
-    CommonModule,
-    UsuarioDeudaRoutingModule,
-    MatCardModule,
-    MatTooltipModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    NgbPopoverModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatSortModule
-  ],
+    imports: [
+        CommonModule,
+        UsuarioDeudaRoutingModule,
+        MatCardModule,
+        MatTooltipModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        NgbPopoverModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatButtonModule,
+        MatSortModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatNativeDateModule
+    ],
   providers: [
     UsuarioDeudaService,
-    UsuarioDeudaContenedorService
+    UsuarioDeudaContenedorService,
+    DatePipe
   ]
 })
 export class UsuarioDeudaModule { }

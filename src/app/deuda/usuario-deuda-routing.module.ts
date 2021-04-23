@@ -14,7 +14,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'editar_deuda/:deuda',
+    path: 'editar_deuda/:usuario/:deuda',
     component: EditarDeudaComponent,
     data: {
       title: 'Editar Deuda '

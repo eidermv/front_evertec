@@ -1,9 +1,13 @@
 <mat-card class="example-card">
   <mat-card-header class="d-flex justify-content-center">
-    <mat-card-title><h1>Gestionar Usuarios</h1></mat-card-title>
+    <mat-card-title><h1>Gestionar Deudas</h1></mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
+    <div class="aling-izq">
+      <button mat-button color="primary" [matTooltip]="'Volver Atras'" (click)="volver()"><mat-icon>arrow_back</mat-icon></button>
+    </div>
+
     <div class="aling-izq">
       <button mat-raised-button color="primary" [matTooltip]="'Agregar Usuario'" (click)="irCrear()"><mat-icon>add</mat-icon></button>
     </div>

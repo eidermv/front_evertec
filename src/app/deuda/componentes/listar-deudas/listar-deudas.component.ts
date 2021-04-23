@@ -20,6 +20,8 @@ import { Usuario } from "../../modelo/usuario";
 })
 export class ListarDeudasComponent implements OnInit, OnDestroy {
 
+  private usuario: Usuario;
+
   public columnas: TablaColumna[] = [
     { label: 'Id', propiedad: 'id_deuda', tipo: 'fixInitT', visible: true, cssClasses: [] },
     { label: 'Monto', propiedad: 'monto', tipo: 'text', visible: true, cssClasses: [] },
@@ -69,8 +71,8 @@ export class ListarDeudasComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.rutaActiva.params.pipe(take(1)).subscribe((params) => {
-      const usuario: Usuario = JSON.parse(params.usuario);
-      this.usuarioService.listarDeudas(usuario);
+      this.usuario = JSON.parse(params.usuario);
+      this.usuarioService.listarDeudas(this.usuario);
     });
     this.contenedor.deudas.asObservable().pipe(takeUntil(this.subs)).subscribe((deudas) => {
       this.cargarDatos(deudas);
@@ -110,15 +112,15 @@ export class ListarDeudasComponent implements OnInit, OnDestroy {
     }
     switch (i) {
       case 1:
-        this.router.navigateByUrl('/usuario/editar_deuda/' + JSON.stringify(data));
+        this.router.navigateByUrl('/usuario/editar_deuda/' + JSON.stringify(this.usuario) + '/' + JSON.stringify(data));
         break;
       case 2:
         Swal.fire({
           title: 'Deuda',
           html:
-            '<input id="swal-input1" class="swal2-input" disabled value="' + data.id_deuda + '">' +
-            '<input id="swal-input2" class="swal2-input" disabled value="' + data.monto + '">' +
-            '<input id="swal-input3" class="swal2-input" disabled value="' + data.fecha_vencimiento + '">',
+            '<div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Id deuda</div> </div> <input type="text" class="form-control" id="swal-input1" placeholder="Id Deuda" disabled value="' + data.id_deuda + '"> </div>' +
+            '<div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Monto</div> </div> <input type="text" class="form-control" id="swal-input2" placeholder="Monto" disabled value="' + data.monto + '"> </div>' +
+            '<div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Fecha Vencimiento</div> </div> <input type="text" class="form-control" id="swal-input3" placeholder="Fech Vencimiento" disabled value="' + data.fecha_vencimiento + '"> </div>',
           focusConfirm: false,
         });
         break;
@@ -217,5 +219,9 @@ export class ListarDeudasComponent implements OnInit, OnDestroy {
 
   irCrear(): void {
     this.router.navigateByUrl('/usuario/crear_deuda');
+  }
+
+  volver(): void{
+    this.router.navigateByUrl('/usuario/listar_usuario');
   }
 }

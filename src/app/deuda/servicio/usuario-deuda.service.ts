@@ -45,7 +45,7 @@ export class UsuarioDeudaService {
   eliminarDeuda(data: any) {
     let paramsIn = new HttpParams().set('value', JSON.stringify(data));
     let value = { params: paramsIn };
-    return this.http.get(environment.apiUrl+'usuario/eliminarDeuda', value).pipe(take(1));
+    return this.http.delete(environment.apiUrl+'usuario/eliminarDeuda', value).pipe(take(1));
   }
 
   listarDeudas(usuario: Usuario) {
@@ -71,5 +71,11 @@ export class UsuarioDeudaService {
       () => {
         this.contenedor.deudas.next(deudas);
       });
+  }
+
+  editarUsuario(deuda: Deuda) {
+    //let paramsIn = new HttpParams().set('value', JSON.stringify(deuda));
+    //let value = { params: paramsIn };
+    return this.http.post(environment.apiUrl+'usuario/agregarActUsDe', deuda).pipe(take(1));
   }
 }
