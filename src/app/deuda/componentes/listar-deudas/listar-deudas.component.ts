@@ -218,7 +218,7 @@ export class ListarDeudasComponent implements OnInit, OnDestroy {
   }
 
   irCrear(): void {
-    this.router.navigateByUrl('/usuario/crear_deuda');
+    this.router.navigateByUrl('/usuario/crear_deuda/' + JSON.stringify(this.usuario));
   }
 
   volver(): void{

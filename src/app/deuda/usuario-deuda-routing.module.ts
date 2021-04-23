@@ -7,7 +7,7 @@ import { ListarUsuariosComponent } from "./componentes/listar-usuarios/listar-us
 
 const routes: Routes = [
   {
-    path: 'crear_deuda',
+    path: 'crear_deuda/:usuario',
     component: CrearDeudaComponent,
     data: {
       title: 'Crear Deuda '
