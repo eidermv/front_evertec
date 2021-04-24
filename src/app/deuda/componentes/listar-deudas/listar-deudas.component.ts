@@ -11,6 +11,8 @@ import { UsuarioDeudaContenedorService } from "../../servicio/usuario-deuda-cont
 import { take, takeUntil } from "rxjs/operators";
 import { MatSlideToggleChange } from "@angular/material/slide-toggle";
 import { Usuario } from "../../modelo/usuario";
+import { ExcelService } from "../../servicio/excel.service";
+import { ExportExcel } from "../../modelo/export";
 
 
 @Component({
@@ -64,7 +66,8 @@ export class ListarDeudasComponent implements OnInit, OnDestroy {
     private usuarioService: UsuarioDeudaService,
     private contenedor: UsuarioDeudaContenedorService,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
+    private excelService: ExcelService
   ) {
     console.log('--- constructor de listar');
   }
@@ -223,5 +226,21 @@ export class ListarDeudasComponent implements OnInit, OnDestroy {
 
   volver(): void{
     this.router.navigateByUrl('/usuario/listar_usuario');
+  }
+
+  descargar() {
+    let dataExp: ExportExcel[] = [];
+    let dato: ExportExcel;
+    this.dataSource.filteredData.forEach((item) => {
+      dato = new ExportExcel();
+      dato.identificacion = this.usuario.identificacion;
+      dato.nombre = this.usuario.nombre;
+      dato.correo = this.usuario.correo;
+      dato.id_deuda = item.id_deuda;
+      dato.monto = item.monto;
+      dato.fecha_vencimiento = item.fecha_vencimiento;
+      dataExp.push(dato);
+    });
+    this.excelService.exportAsExcelFile(dataExp, 'Deudas_'+this.usuario.identificacion);
   }
 }

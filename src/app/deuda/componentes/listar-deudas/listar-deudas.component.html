@@ -88,6 +88,9 @@
         <mat-paginator [pageSizeOptions]="this.itemsPagina" showFirstLastButtons></mat-paginator>
       </div>
     </div>
+    <div class="aling-izq">
+      <button mat-button color="primary" [matTooltip]="'Descargar Información'" (click)="descargar()"><mat-icon class="icon-medio">move_to_inbox</mat-icon></button>
+    </div>
 
   </mat-card-content>
   <mat-card-actions>

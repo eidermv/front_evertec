@@ -22,10 +22,12 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatMenuModule } from "@angular/material/menu";
+import { CargarArchivoComponent } from './componentes/cargar-archivo/cargar-archivo.component';
+import { ExcelService } from "./servicio/excel.service";
 
 
 @NgModule({
-  declarations: [ListarUsuariosComponent, ListarDeudasComponent, CrearDeudaComponent, EditarDeudaComponent],
+  declarations: [ListarUsuariosComponent, ListarDeudasComponent, CrearDeudaComponent, EditarDeudaComponent, CargarArchivoComponent],
     imports: [
         CommonModule,
         UsuarioDeudaRoutingModule,
@@ -46,7 +48,8 @@ import { MatMenuModule } from "@angular/material/menu";
   providers: [
     UsuarioDeudaService,
     UsuarioDeudaContenedorService,
-    DatePipe
+    DatePipe,
+    ExcelService
   ]
 })
 export class UsuarioDeudaModule { }
