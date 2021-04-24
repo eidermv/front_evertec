@@ -13,21 +13,23 @@ import { StorageService } from "./app/service/storage.service";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import { MatMenuModule } from "@angular/material/menu";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    NgbModule,
-    MatTooltipModule,
-    MatButtonModule,
-    MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        NgbModule,
+        MatTooltipModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule
+    ],
   providers: [
     SesionService,
     LocalService,

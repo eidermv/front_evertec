@@ -21,6 +21,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
+import { MatMenuModule } from "@angular/material/menu";
 
 
 @NgModule({

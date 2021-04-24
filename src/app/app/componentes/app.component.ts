@@ -4,6 +4,7 @@ import { SesionService } from "../service/sesion.service";
 import { Router } from "@angular/router";
 import { ReplaySubject } from "rxjs";
 import { LocalService } from "../service/local.service";
+import { Login } from "../../login/modelo/login";
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private subs: ReplaySubject<void> = new ReplaySubject();
   public logueado = false;
+  public datos: Login;
 
   constructor(
     private router: Router,
@@ -52,6 +54,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sesion.logueado.asObservable().pipe(takeUntil(this.subs)).subscribe((valor) => {
       console.log('cambio de valor sesion ' + valor);
       this.logueado = valor;
+      if (valor) {
+        this.datos = this.sesion.getDatos();
+      } else {
+        this.datos = new Login();
+      }
     });
   }
 
@@ -75,5 +82,9 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subs.next();
     this.subs.complete();
+  }
+
+  irUsuarios() {
+    this.router.navigateByUrl('/usuario/listar_usuario');
   }
 }
