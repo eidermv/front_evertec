@@ -12,7 +12,7 @@ import { take, takeUntil } from "rxjs/operators";
 import { MatSlideToggleChange } from "@angular/material/slide-toggle";
 import { Usuario } from "../../modelo/usuario";
 import { ExcelService } from "../../servicio/excel.service";
-import { ExportExcel } from "../../modelo/export";
+import { ExcelJson, ExportExcel } from "../../modelo/export";
 
 
 @Component({
@@ -241,6 +241,24 @@ export class ListarDeudasComponent implements OnInit, OnDestroy {
       dato.fecha_vencimiento = item.fecha_vencimiento;
       dataExp.push(dato);
     });
-    this.excelService.exportAsExcelFile(dataExp, 'Deudas_'+this.usuario.identificacion);
+
+    const udt: ExcelJson = {
+      data: [
+        { A: 'Identificacion', B: 'Nombre', C: 'Correo', D: 'Id_Deuda', E: 'Monto', F: 'Fecha_Vencimiento' }, // table header
+      ],
+      skipHeader: true
+    };
+    this.dataSource.filteredData.forEach(item => {
+      udt.data.push({
+        A: this.usuario.identificacion,
+        B: this.usuario.nombre,
+        C: this.usuario.correo,
+        D: item.id_deuda,
+        E: item.monto,
+        F: item.fecha_vencimiento
+      });
+    });
+
+    this.excelService.exportAsExcel(udt, 'Deudas_'+this.usuario.identificacion);
   }
 }
