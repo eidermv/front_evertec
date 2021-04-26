@@ -126,6 +126,8 @@ export class ConsultarDeudaComponent implements OnInit, OnDestroy {
           fecha_carga: moment(this.controls.fecha_carga.value).format('YYYY-MM-DD'),
         };
 
+        console.log(moment(this.controls.fecha_carga.value).format('YYYY-MM-DD'));
+
         Swal.fire({
           title: 'Consultando!',
           html: 'Por favor espere..........',
