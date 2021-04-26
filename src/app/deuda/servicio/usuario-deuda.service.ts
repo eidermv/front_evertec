@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { UsuarioDeudaContenedorService } from "./usuario-deuda-contenedor.service";
-import { take } from "rxjs/operators";
+import { take, tap } from "rxjs/operators";
 import { Usuario } from "../modelo/usuario";
 import Swal from 'sweetalert2';
 import { Deuda } from "../modelo/deuda";
@@ -99,9 +99,22 @@ export class UsuarioDeudaService {
       });
   }
 
-  editarUsuario(deuda: Deuda) {
+  editarUsuario(deuda: any) {
     //let paramsIn = new HttpParams().set('value', JSON.stringify(deuda));
     //let value = { params: paramsIn };
     return this.http.post(environment.apiUrl+'usuario/agregarActUsDe', deuda).pipe(take(1));
+  }
+
+  crearDeuda(deuda: any) {
+    //let paramsIn = new HttpParams().set('value', JSON.stringify(deuda));
+    //let value = { params: paramsIn };
+    return this.http.post(environment.apiUrl+'usuario/agregarActUsDe', deuda).pipe(take(1)).subscribe( (data: any) => {
+        this.contenedor.resultadoInsert.pipe(tap( (rtas) => {
+          const ind = rtas.findIndex( (valor) => valor.identificacion === deuda.identificacion && valor.id_deuda === deuda.id_deuda);
+          rtas[ind].mensaje = data.mensaje;
+          rtas[ind].error = data.error;
+        }), take(1)).subscribe();
+      }
+    );
   }
 }

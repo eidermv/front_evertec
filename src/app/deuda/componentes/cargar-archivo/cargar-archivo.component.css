@@ -1,0 +1,138 @@
+.full{
+  width: 100%;
+}
+
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #5bc7ca;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+  margin-top: -0.1rem !important;
+}
+
+/*.mat-form-field-appearance-outline {
+    margin-top: -0.5rem !important;
+}*/
+
+.mat-form-field-appearance-outline .mat-form-field-suffix,.mat-form-field-prefix  {
+  align-self: center;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-end {
+  border-radius: 0px !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-start {
+  border-radius: 0px !important;
+}
+
+.mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+.mat-form-field-label-wrapper { top: -1.5em; }
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-1.1em) scale(.75);
+  width: 133.33333%;
+}
+
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+th {
+  background-color: #fafafa;
+  font-weight: bold;
+}
+
+tr:hover {
+  transition: .2s;
+  background-color: #F3FDFF;
+}
+
+.mat-table-sticky:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky:last-child {
+  border-left: 1px solid #e0e0e0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: -1.5rem;
+}
+
+th, td {
+  overflow: hidden;
+  /*max-width: 150px;*/
+  min-width: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.mat-header-row, .mat-row {
+  height: 35px !important;
+}
+
+.mat-paginator{
+  margin-top: -12px !important;
+  height: 40px !important;
+}
+
+.mat-header-cell, .mat-cell{
+  text-align: center !important;
+}
+
+
+
+.example-card {
+  max-width: 1000px;
+}
+
+.full-card {
+  min-width: 600px;
+}
+
+
+.aling-izq {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.terminal {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 6px;
+  padding-top: 45px;
+  margin-top: 8px;
+  overflow: hidden;
+  background-color: rgb(15, 15, 16);
+  height: 100px;
+}
+
+.terminal::before {
+  content: "\2022 \2022 \2022";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10px;
+  background: rgb(58, 58, 58);
+  color: #c2c3c4;
+  width: 100%;
+  font-size: 2rem;
+  line-height: 0;
+  padding: 14px 0;
+  text-indent: 4px;
+}
+
+.terminal pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  color: white;
+  padding: 0 1rem 1rem;
+  margin: 0;
+}

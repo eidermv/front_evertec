@@ -25,27 +25,29 @@ import { MatMenuModule } from "@angular/material/menu";
 import { CargarArchivoComponent } from './componentes/cargar-archivo/cargar-archivo.component';
 import { ExcelService } from "./servicio/excel.service";
 import { ConsultarDeudaComponent } from './componentes/consultar-deuda/consultar-deuda.component';
+import { FileUploadModule } from "@iplab/ngx-file-upload";
 
 
 @NgModule({
   declarations: [ListarUsuariosComponent, ListarDeudasComponent, CrearDeudaComponent, EditarDeudaComponent, CargarArchivoComponent, ConsultarDeudaComponent],
-    imports: [
-        CommonModule,
-        UsuarioDeudaRoutingModule,
-        MatCardModule,
-        MatTooltipModule,
-        MatIconModule,
-        MatFormFieldModule,
-        MatInputModule,
-        NgbPopoverModule,
-        MatPaginatorModule,
-        MatTableModule,
-        MatButtonModule,
-        MatSortModule,
-        ReactiveFormsModule,
-        MatDatepickerModule,
-        MatNativeDateModule
-    ],
+  imports: [
+    CommonModule,
+    UsuarioDeudaRoutingModule,
+    MatCardModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NgbPopoverModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatSortModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FileUploadModule
+  ],
   providers: [
     UsuarioDeudaService,
     UsuarioDeudaContenedorService,

@@ -5,6 +5,7 @@ import { EditarDeudaComponent } from "./componentes/editar-deuda/editar-deuda.co
 import { ListarDeudasComponent } from "./componentes/listar-deudas/listar-deudas.component";
 import { ListarUsuariosComponent } from "./componentes/listar-usuarios/listar-usuarios.component";
 import { ConsultarDeudaComponent } from "./componentes/consultar-deuda/consultar-deuda.component";
+import { CargarArchivoComponent } from "./componentes/cargar-archivo/cargar-archivo.component";
 
 const routes: Routes = [
   {
@@ -40,6 +41,13 @@ const routes: Routes = [
     component: ConsultarDeudaComponent,
     data: {
       title: 'Consultar Deuda '
+    }
+  },
+  {
+    path: 'cargar_archivo',
+    component: CargarArchivoComponent,
+    data: {
+      title: 'Cargar Archivo '
     }
   }
 ];
