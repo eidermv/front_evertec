@@ -24,10 +24,11 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatMenuModule } from "@angular/material/menu";
 import { CargarArchivoComponent } from './componentes/cargar-archivo/cargar-archivo.component';
 import { ExcelService } from "./servicio/excel.service";
+import { ConsultarDeudaComponent } from './componentes/consultar-deuda/consultar-deuda.component';
 
 
 @NgModule({
-  declarations: [ListarUsuariosComponent, ListarDeudasComponent, CrearDeudaComponent, EditarDeudaComponent, CargarArchivoComponent],
+  declarations: [ListarUsuariosComponent, ListarDeudasComponent, CrearDeudaComponent, EditarDeudaComponent, CargarArchivoComponent, ConsultarDeudaComponent],
     imports: [
         CommonModule,
         UsuarioDeudaRoutingModule,

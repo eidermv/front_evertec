@@ -28,8 +28,7 @@ export class CrearDeudaComponent implements OnInit, OnDestroy, AfterViewInit {
   ];
 
   public errorFechVen: Validacion[] = [
-    {tipo: 'required', msn: 'Fecha vencimiento es requerido'},
-    {tipo: 'minlength', msn: 'Contraseña debe tener minimo 6 caracteres'}
+    {tipo: 'required', msn: 'Fecha vencimiento es requerido'}
   ];
 
   public mnsErrorId = '';

@@ -6,6 +6,7 @@ import { take } from "rxjs/operators";
 import { Usuario } from "../modelo/usuario";
 import Swal from 'sweetalert2';
 import { Deuda } from "../modelo/deuda";
+import { Consulta } from "../modelo/consulta";
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,31 @@ export class UsuarioDeudaService {
       },
       () => {
         this.contenedor.deudas.next(deudas);
+      });
+  }
+
+  listarDeudasFiltro(usuario: any) {
+    let consultas: Consulta[] = [];
+    let paramsIn = new HttpParams().set('value', JSON.stringify(usuario));
+    let value = { params: paramsIn };
+    this.http.get(environment.apiUrl+'usuario/consultarDeudas', value).pipe(take(1)).subscribe( (data: any) => {
+        if (data.error === '0') {
+          consultas = data.data;
+        } else {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: data.mensaje,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        this.contenedor.consultas.next(consultas);
       });
   }
 

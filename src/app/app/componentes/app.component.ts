@@ -87,4 +87,8 @@ export class AppComponent implements OnInit, OnDestroy {
   irUsuarios() {
     this.router.navigateByUrl('/usuario/listar_usuario');
   }
+
+  irConsultar() {
+    this.router.navigateByUrl('/usuario/consultar_deuda');
+  }
 }
