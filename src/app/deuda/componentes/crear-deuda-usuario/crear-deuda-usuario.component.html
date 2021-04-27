@@ -1,0 +1,88 @@
+<mat-card class="example-card">
+  <mat-card-header class="d-flex justify-content-center">
+    <mat-card-title><h2>Crear Deuda</h2></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="aling-izq">
+      <button mat-button color="primary" [matTooltip]="'Volver Atras'" (click)="volver()"><mat-icon>arrow_back</mat-icon></button>
+    </div>
+
+    <form class="" [formGroup]="deudaForm">
+
+      <div class="row">
+
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field appearance="outline">
+            <mat-label>Id deuda</mat-label>
+            <input matInput placeholder="Placeholder" [formControl]="this.controls.id_deuda" [maxLength]="15" required>
+            <!--          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>-->
+            <mat-error *ngIf="this.controls.id_deuda.invalid">{{this.mnsErrorId}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field appearance="outline">
+            <mat-label>Monto</mat-label>
+            <input matInput placeholder="Placeholder" [formControl]="this.controls.monto" [maxLength]="20" required>
+            <!--          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>-->
+            <mat-error *ngIf="this.controls.monto.invalid">{{this.mnsErrorMonto}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha Vencimiento</mat-label>
+            <input matInput [matDatepicker]="picker" [formControl]="this.controls.fecha_venc"
+                   required [min]="this.inicioFecha" [max]="this.limiteFecha">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="this.controls.fecha_venc.invalid">{{this.mnsErrorFechVen}}</mat-error>
+            <mat-hint style="color: forestgreen" *ngIf="this.controls.fecha_venc.valid && this.controls.fecha_venc.value!==''"><mat-icon>verified</mat-icon> Correcto</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field appearance="outline">
+            <mat-label>Identificacion</mat-label>
+            <input matInput placeholder="Placeholder" [formControl]="this.controls.identificacion" [maxLength]="15" required>
+            <!--          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>-->
+            <mat-error *ngIf="this.controls.identificacion.invalid">{{this.mnsErrorIdent}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Placeholder" [formControl]="this.controls.nombre" [maxLength]="60" required>
+            <!--          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>-->
+            <mat-error *ngIf="this.controls.nombre.invalid">{{this.mnsErrorNomb}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input matInput placeholder="Placeholder" [formControl]="this.controls.correo" [maxLength]="60" required>
+            <!--          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>-->
+            <mat-error *ngIf="this.controls.correo.invalid">{{this.mnsErrorCorreo}}</mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="centrar">
+      <button mat-mini-fab color="primary" [disabled]="this.deudaForm.invalid" [matTooltip]="'Guardar Deuda'" (click)="guardar()"><mat-icon>save</mat-icon></button>
+    </div>
+  </mat-card-actions>
+</mat-card>

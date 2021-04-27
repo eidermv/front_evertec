@@ -6,6 +6,7 @@ import { ListarDeudasComponent } from "./componentes/listar-deudas/listar-deudas
 import { ListarUsuariosComponent } from "./componentes/listar-usuarios/listar-usuarios.component";
 import { ConsultarDeudaComponent } from "./componentes/consultar-deuda/consultar-deuda.component";
 import { CargarArchivoComponent } from "./componentes/cargar-archivo/cargar-archivo.component";
+import { CrearDeudaUsuarioComponent } from "./componentes/crear-deuda-usuario/crear-deuda-usuario.component";
 
 const routes: Routes = [
   {
@@ -48,6 +49,13 @@ const routes: Routes = [
     component: CargarArchivoComponent,
     data: {
       title: 'Cargar Archivo '
+    }
+  },
+  {
+    path: 'crear_us_deud',
+    component: CrearDeudaUsuarioComponent,
+    data: {
+      title: 'Crear Usuario y Deuda '
     }
   }
 ];

@@ -121,12 +121,12 @@ export class ConsultarDeudaComponent implements OnInit, OnDestroy {
         });
       } else {
         const deuda = {
-          identificacion: this.controls.ident.value,
-          monto: this.controls.monto.value,
-          fecha_carga: moment(this.controls.fecha_carga.value).format('YYYY-MM-DD'),
+          identificacion: (this.controls.ident.value !== '')?this.controls.ident.value:null,
+          monto: (this.controls.monto.value !== '')?Number(this.controls.monto.value):null,
+          fecha_carga: (this.controls.fecha_carga.value !== '')?moment(this.controls.fecha_carga.value).format('YYYY-MM-DD'):null
         };
 
-        console.log(moment(this.controls.fecha_carga.value).format('YYYY-MM-DD'));
+        console.log((this.controls.fecha_carga.value === '') + ' - ' + moment(this.controls.fecha_carga.value).format('YYYY-MM-DD'));
 
         Swal.fire({
           title: 'Consultando!',
@@ -301,6 +301,7 @@ export class ConsultarDeudaComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subs.next();
     this.subs.complete();
+    this.contenedor.consultas.next([]);
   }
 
   get visibleColumns(): string[] {
@@ -308,7 +309,7 @@ export class ConsultarDeudaComponent implements OnInit, OnDestroy {
   }
 
   irCrear(): void {
-    this.router.navigateByUrl('/usuario/crear_deuda/' + JSON.stringify(this.usuario));
+    this.router.navigateByUrl('/usuario/crear_us_deud');
   }
 
   descargar() {

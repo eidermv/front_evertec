@@ -26,10 +26,11 @@ import { CargarArchivoComponent } from './componentes/cargar-archivo/cargar-arch
 import { ExcelService } from "./servicio/excel.service";
 import { ConsultarDeudaComponent } from './componentes/consultar-deuda/consultar-deuda.component';
 import { FileUploadModule } from "@iplab/ngx-file-upload";
+import { CrearDeudaUsuarioComponent } from './componentes/crear-deuda-usuario/crear-deuda-usuario.component';
 
 
 @NgModule({
-  declarations: [ListarUsuariosComponent, ListarDeudasComponent, CrearDeudaComponent, EditarDeudaComponent, CargarArchivoComponent, ConsultarDeudaComponent],
+  declarations: [ListarUsuariosComponent, ListarDeudasComponent, CrearDeudaComponent, EditarDeudaComponent, CargarArchivoComponent, ConsultarDeudaComponent, CrearDeudaUsuarioComponent],
   imports: [
     CommonModule,
     UsuarioDeudaRoutingModule,

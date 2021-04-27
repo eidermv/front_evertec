@@ -12,35 +12,59 @@ import * as moment from "moment";
 import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-crear-deuda',
-  templateUrl: './crear-deuda.component.html',
-  styleUrls: ['./crear-deuda.component.css'],
+  selector: 'app-crear-deuda-usuario',
+  templateUrl: './crear-deuda-usuario.component.html',
+  styleUrls: ['./crear-deuda-usuario.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class CrearDeudaComponent implements OnInit, OnDestroy, AfterViewInit {
+export class CrearDeudaUsuarioComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public errorId: Validacion[] = [
-    {tipo: 'required', msn: 'Id deuda es requerido'}
+    {tipo: 'required', msn: 'Id deuda es requerido'},
+    {tipo: 'maxlength', msn: 'Id deuda supera longitud'}
   ];
 
   public errorMonto: Validacion[] = [
-    {tipo: 'required', msn: 'Monto es requerido'}
+    {tipo: 'required', msn: 'Monto es requerido'},
+    {tipo: 'maxlength', msn: 'Monto supera longitud'}
   ];
 
   public errorFechVen: Validacion[] = [
     {tipo: 'required', msn: 'Fecha vencimiento es requerido'}
   ];
 
+  public errorIdent: Validacion[] = [
+    {tipo: 'required', msn: 'Identificacion es requerido'},
+    {tipo: 'maxlength', msn: 'Identificacion supera longitud'}
+  ];
+
+  public errorNombre: Validacion[] = [
+    {tipo: 'required', msn: 'Nombre es requerido'},
+    {tipo: 'maxlength', msn: 'Nombre supera longitud'}
+  ];
+
+  public errorCorreo: Validacion[] = [
+    {tipo: 'required', msn: 'Correo es requerido'},
+    {tipo: 'email', msn: 'Correo es invalido'},
+    {tipo: 'maxlength', msn: 'Correo supera longitud'}
+  ];
+
   public mnsErrorId = '';
   public mnsErrorMonto = '';
   public mnsErrorFechVen = '';
+  public mnsErrorIdent = '';
+  public mnsErrorNomb = '';
+  public mnsErrorCorreo = '';
 
 
 
   public controls = {
-    id_deuda: new FormControl('', [Validators.required]),
-    monto: new FormControl('', [Validators.required]),
-    fecha_venc: new FormControl('', [Validators.required])
+    id_deuda: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+    monto: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+    fecha_venc: new FormControl('', [Validators.required]),
+    identificacion: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+    nombre: new FormControl('', [Validators.required, Validators.maxLength(60)]),
+    correo: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(60)])
 
   };
 
@@ -65,19 +89,18 @@ export class CrearDeudaComponent implements OnInit, OnDestroy, AfterViewInit {
     this.deudaForm = this.fb.group({
       id_deuda: this.controls.id_deuda,
       monto: this.controls.monto,
-      fecha_vencimiento: this.controls.fecha_venc
+      fecha_vencimiento: this.controls.fecha_venc,
+      identificacion: this.controls.identificacion,
+      nombre: this.controls.nombre,
+      correo: this.controls.correo
     });
 
 
-    this.rutaActiva.params.pipe(take(1)).subscribe((params) => {
-      this.usuario = JSON.parse(params.usuario);
-      console.log(JSON.stringify(this.usuario) +  ' ====== ');
-    });
   }
 
 
   volver(): void{
-    this.router.navigateByUrl('/usuario/listar_deuda/' + JSON.stringify(this.usuario));
+    this.router.navigateByUrl('/usuario/consultar_deuda');
   }
 
   guardar(): void {
@@ -88,9 +111,9 @@ export class CrearDeudaComponent implements OnInit, OnDestroy, AfterViewInit {
         id_deuda: this.controls.id_deuda.value,
         monto: this.controls.monto.value,
         fecha_vencimiento: moment(this.controls.fecha_venc.value).format('YYYY-MM-DD'),
-        identificacion: this.usuario.identificacion,
-        nombre: this.usuario.nombre,
-        correo: this.usuario.correo
+        identificacion: this.controls.identificacion.value,
+        nombre: this.controls.nombre.value,
+        correo: this.controls.correo.value
       };
 
       Swal.fire({
@@ -120,11 +143,11 @@ export class CrearDeudaComponent implements OnInit, OnDestroy, AfterViewInit {
             Swal.fire({
               position: 'top-end',
               icon: 'success',
-              title: 'Deuda se ha actualizado con exito',
+              title: 'Deuda se ha creo con exito',
               showConfirmButton: false,
               timer: 1500
             });
-            this.router.navigateByUrl('/usuario/listar_deuda/' + JSON.stringify(this.usuario));
+            this.router.navigateByUrl('/usuario/consultar_deuda');
           } else {
             Swal.fire({
               position: 'top-end',
@@ -170,6 +193,33 @@ export class CrearDeudaComponent implements OnInit, OnDestroy, AfterViewInit {
         this.errorFechVen.forEach((error) => {
           if (this.controls.fecha_venc.hasError(error.tipo)) {
             this.mnsErrorFechVen = error.msn;
+          }
+        });
+      }
+    });
+    this.controls.identificacion.statusChanges.pipe(takeUntil(this.subs)).subscribe((valor) => {
+      if (valor === 'INVALID') {
+        this.errorIdent.forEach((error) => {
+          if (this.controls.identificacion.hasError(error.tipo)) {
+            this.mnsErrorIdent = error.msn;
+          }
+        });
+      }
+    });
+    this.controls.nombre.statusChanges.pipe(takeUntil(this.subs)).subscribe((valor) => {
+      if (valor === 'INVALID') {
+        this.errorNombre.forEach((error) => {
+          if (this.controls.nombre.hasError(error.tipo)) {
+            this.mnsErrorNomb = error.msn;
+          }
+        });
+      }
+    });
+    this.controls.correo.statusChanges.pipe(takeUntil(this.subs)).subscribe((valor) => {
+      if (valor === 'INVALID') {
+        this.errorCorreo.forEach((error) => {
+          if (this.controls.correo.hasError(error.tipo)) {
+            this.mnsErrorCorreo = error.msn;
           }
         });
       }
