@@ -121,9 +121,9 @@ export class ConsultarDeudaComponent implements OnInit, OnDestroy {
         });
       } else {
         const deuda = {
-          identificacion: (this.controls.ident.value !== '')?this.controls.ident.value:null,
-          monto: (this.controls.monto.value !== '')?Number(this.controls.monto.value):null,
-          fecha_carga: (this.controls.fecha_carga.value !== '')?moment(this.controls.fecha_carga.value).format('YYYY-MM-DD'):null
+          identificacion: (this.controls.ident.value !== '')?this.controls.ident.value:'',
+          monto: (this.controls.monto.value !== '')?Number(this.controls.monto.value):'',
+          fecha_carga: (this.controls.fecha_carga.value !== '')?moment(this.controls.fecha_carga.value).format('YYYY-MM-DD'):''
         };
 
         console.log((this.controls.fecha_carga.value === '') + ' - ' + moment(this.controls.fecha_carga.value).format('YYYY-MM-DD'));
